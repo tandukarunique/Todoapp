@@ -6,7 +6,11 @@ export const Todoform = ({ editTodo, task }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    editTodo(value, task.id);
+    if (!value.trim()) return;
+
+    if (editTodo && typeof editTodo === "function") {
+      editTodo(value, task.id);
+    }
     setValue("");
   };
   return (

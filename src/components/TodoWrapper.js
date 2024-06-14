@@ -2,40 +2,38 @@ import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Todo } from "./Todo";
 import { Todoform } from "./Todoform";
-uuidv4();
 
 export const TodoWrapper = () => {
   const [todos, setTodos] = useState([]);
+  const [editingTodoId, setEditingTodoId] = useState(null);
 
   const addTodo = (todo) => {
-    setTodos([
-      ...todos,
-      { id: uuidv4(), task: todo, completed: false, isEditing: false },
-    ]);
-    console.log(todos);
+    setTodos([...todos, { id: uuidv4(), task: todo, completed: false }]);
   };
+
   const toggleComplete = (id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id
-          ? {
-              ...todo,
-              completed: !todo.completed,
-            }
-          : todo
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
+
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
   const editTodo = (id) => {
+    setEditingTodoId(id);
+  };
+
+  const editTask = (task, id) => {
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+        todo.id === id ? { ...todo, task, isEditing: false } : todo
       )
     );
+    setEditingTodoId(null);
   };
 
   return (
@@ -43,13 +41,18 @@ export const TodoWrapper = () => {
       <h1>Get Things Done</h1>
       <Todoform addTodo={addTodo} />
       {todos.map((todo, index) => (
-        <Todo
-          task={todo}
-          key={index}
-          toggleComplete={toggleComplete}
-          deleteTodo={deleteTodo}
-          editTodo={editTodo}
-        />
+        <React.Fragment key={index}>
+          {editingTodoId === todo.id ? (
+            <Todoform editTodo={editTask} task={todo} />
+          ) : (
+            <Todo
+              task={todo}
+              toggleComplete={toggleComplete}
+              deleteTodo={deleteTodo}
+              editTodo={() => editTodo(todo.id)}
+            />
+          )}
+        </React.Fragment>
       ))}
     </div>
   );
