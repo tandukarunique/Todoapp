@@ -38,7 +38,7 @@ export const TodoWrapper = () => {
 
   return (
     <div className="TodoWrapper">
-      <h1>Get Things Done</h1>
+      <h1>𝐓ⱺ ᑯⱺ 𝐋𝗂𝗌𝗍</h1>
       <Todoform addTodo={addTodo} />
       {todos.map((todo, index) => (
         <React.Fragment key={index}>

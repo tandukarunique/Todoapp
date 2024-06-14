@@ -1,21 +1,29 @@
-/* Styles for the TodoWrapper component */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #8b5cf6; /* Purple background */
+}
+
 .TodoWrapper {
   max-width: 600px;
   margin: 50px auto;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
+  background-color: #1e1b4b; /* Dark purple background */
   text-align: center;
 }
 
 .TodoWrapper h1 {
   font-size: 2em;
-  color: #333;
+  color: #ffffff; /* White text color */
   margin-bottom: 20px;
 }
 
-/* Styles for the Todoform component */
 .Todoform {
   display: flex;
   flex-direction: column;
@@ -24,12 +32,18 @@
 }
 
 .todo-input {
-  width: 80%;
+  width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 10px;
-  border: 2px solid #ccc;
+  border: 2px solid #6d28d9;
   border-radius: 4px;
   font-size: 16px;
+  background-color: #5b21b6;
+  color: #ffffff; /* White text color */
+}
+
+.todo-input::placeholder {
+  color: #d4d4d8; /* Light purple placeholder color */
 }
 
 .todo-input:focus {
@@ -40,50 +54,59 @@
 .todo-btn {
   padding: 10px 20px;
   font-size: 16px;
-  color: #fff;
-  background-color: #007bff;
+  color: #ffffff; /* White text color */
+  background-color: #6d28d9;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .todo-btn:hover {
-  background-color: #0056b3;
+  background-color: #7c3aed;
 }
 
 .todo-btn:active {
-  background-color: #004085;
+  background-color: #5b21b6;
 }
 
-/* Styles for the Todo component */
 .Todo {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
   margin: 10px 0;
-  border-bottom: 1px solid #ccc;
-  background-color: #fff;
+  background-color: #5b21b6; /* Medium purple background */
   border-radius: 4px;
 }
 
 .Todo.completed {
   text-decoration: line-through;
-  color: #aaa;
+  color: #d4d4d8; /* Light purple color for completed tasks */
 }
 
-.Todo button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  font-size: 14px;
-  border: none;
-  border-radius: 4px;
+.Todo .task {
+  color: #ffffff; /* White text color */
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.Todo .actions {
+  display: flex;
+  gap: 10px;
+}
+
+.Todo .actions .icon {
   cursor: pointer;
+  color: #ffffff; /* White icon color */
+}
+
+.Todo .actions .icon:hover {
+  color: #e0e0e0; /* Light grey color on hover */
 }
 
 .Todo .edit-btn {
-  background-color: #ffc107;
-  color: #fff;
+  background-color: #ffc107; /* Yellow background for edit button */
+  color: #ffffff; /* White text color */
 }
 
 .Todo .edit-btn:hover {
@@ -95,8 +118,8 @@
 }
 
 .Todo .delete-btn {
-  background-color: #dc3545;
-  color: #fff;
+  background-color: #dc3545; /* Red background for delete button */
+  color: #ffffff; /* White text color */
 }
 
 .Todo .delete-btn:hover {
